@@ -1,0 +1,1591 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report MustUnderstand="df" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:df="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily">
+  <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource1">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString>Data Source=localhost;Initial Catalog=iSAMS_Trident</ConnectString>
+        <IntegratedSecurity>true</IntegratedSecurity>
+      </ConnectionProperties>
+      <rd:SecurityType>Integrated</rd:SecurityType>
+      <rd:DataSourceID>3128f24a-3fc6-4e6d-b96e-43c1fce325e7</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="iSAMS">
+      <Query>
+        <DataSourceName>DataSource1</DataSourceName>
+        <CommandText>SELECT        TblPupilManagementPupils.intSystemStatus, TblPupilManagementPupils.TblPupilManagementPupilsID, TblPupilManagementPupils.txtForename, 
+                         TblPupilManagementPupils.txtSurname, TblPupilManagementPupils.txtPreName, TblPupilManagementPupils.intNCYear, TblPupilManagementPupils.txtForm, 
+                         TblPupilManagementPupils.txtBoardingHouse, TblPupilManagementAddresses.txtAddressType, TblPupilManagementAddresses.txtRelationType, 
+                         TblPupilManagementAddresses.intJustContact, TblPupilManagementAddresses.intMailMergeAll, TblPupilManagementAddresses.intBillingMailMerge, 
+                         TblPupilManagementAddresses.intCorrespondenceMailMerge, TblPupilManagementAddresses.intReportsMailMerge, 
+                         TblPupilManagementAddresses.txtAddress1, TblPupilManagementAddresses.txtAddress2, TblPupilManagementAddresses.txtAddress3, 
+                         TblPupilManagementAddresses.txtTown, TblPupilManagementAddresses.txtCounty, TblPupilManagementAddresses.txtCountry, 
+                         TblPupilManagementAddresses.txtPostcode, TblPupilManagementAddresses.txtFax, TblPupilManagementAddresses.txtLabelSalutation, 
+                         TblSchools.Name AS txtPreviousSchoolName, TblPupilManagementAddresses.intOrder, TblPupilManagementAddresses.txtContactsTitle, 
+                         TblPupilManagementAddresses.txtContactsForename, TblPupilManagementAddresses.txtContactsSurname, 
+                         TblPupilManagementAddresses.txtLetterSalutation, TblPupilManagementAddresses.txtDayTelephone, TblPupilManagementAddresses.txtMobile1, 
+                         TblPupilManagementAddresses.txtEmail1, TblPupilManagementPupils.txtDOB, TblPupilManagementAddresses.intStudentHome, DATEDIFF(Month, 
+                         TblPupilManagementPupils.txtDOB, { fn NOW() }) AS intMonths,
+                             (SELECT        TOP (1) txtPath
+                               FROM            TblPupilManagementPictures
+                               WHERE        (txtSchoolID = TblPupilManagementPupils.txtSchoolID)
+                               ORDER BY intOrder DESC) AS txtPath, TblPupilManagementPupils.txtSchoolID, TblPupilManagementPupils.txtMiddleNames, 
+                         TblPupilManagementPupils.txtGender, TblPupilManagementPupils.txtTutor, TblPupilManagementPupils.txtType, 
+                         TblPupilManagementPupils.txtAcademicHouse, TblPupilManagementPupils.txtAdmissionsDate, TblStaff.Title, TblStaff.Firstname, TblStaff.Surname, 
+                         TblPupilManagementPupils.txtSiblingsIDList, TblPupilManagementAddresses.txtContactsInitials, TblPupilManagementAddresses.txtContactsMiddleNames, 
+                         TblPupilManagementAddresses.txtSecondaryTitle, TblPupilManagementAddresses.txtSecondaryForename, 
+                         TblPupilManagementAddresses.txtSecondarySurname, TblPupilManagementAddresses.txtSecondaryInitials, 
+                         TblPupilManagementAddresses.txtSecondaryMiddleNames, TblPupilManagementAddresses.txtMobile2, TblPupilManagementAddresses.txtEmail2, 
+                         TblPupilManagementAddresses.txtProfession, TblPupilManagementAddresses.txtWorkTelephone, 
+                         TblPupilManagementAddresses.txtAddress1 AS StxtAddress1, TblPupilManagementPupils.txtOtherMedical, 
+                         TblPupilManagementPupils.txtOtherMedicalInformation, TblPupilManagementAddresses.txtSOS, TblPupilManagementPupils.txtAdditionalHealth, 
+                         TblPupilManagementPupils.intAsthmatic, TblPupilManagementPupils.txtAsthmaticNotes, TblPupilManagementPupils.intAllergy, 
+                         TblPupilManagementPupils.txtAllergyNotes, TblPupilManagementPupils.intDiabetes, TblPupilManagementPupils.txtDiabetesNotes, 
+                         TblPupilManagementPupils.intEpilepsy, TblPupilManagementPupils.txtEpilepsyNotes, TblPupilManagementPupils.intTravelSickness, 
+                         TblPupilManagementPupils.txtTravelSicknessNotes, TblPupilManagementPupils.txtHeadachesMigrainesNotes, TblPupilManagementPupils.txtTitle, 
+                         TblPupilManagementPupils.txtOfficialName, TblPupilManagementPupils.txtInitials, TblPupilManagementPupils.txtFullName, 
+                         TblPupilManagementAddresses.TblPupilManagementAddressesID, TblPupilManagementPupils.txtContactNotes, 
+                         TblPupilManagementPupils.intDuplicateReports, TblPupilManagementAddresses.txtSecondaryProfession, TblPupilManagementAddresses.intContactPTA, 
+                         TblPupilManagementAddresses.intSecondaryPTA, TblPupilManagementAddresses.intDeceased, TblPupilManagementAddresses.intSecondaryDeceased, 
+                         TblPupilManagementAddresses.txtWorkFax, TblPupilManagementAddresses.intPrivate, TblPupilManagementAddresses.intCanShare, 
+                         TblPupilManagementAddresses.intReport, TblStaff.Initials, TblSchoolManagementYears.txtYearName, TblPupilManagementPupils.txtPegNumber, 
+                         TblPMP.txtPreName AS StxtPreName, TblPMP.txtSurname AS StxtSurname, TblPMP.txtDOB AS StxtDOB, DATEDIFF(Month, TblPMP.txtDOB, GETDATE()) 
+                         AS SintMonths, TblPMP.txtSchoolID AS SID, TblPupilManagementPupils.txtFutureForm, TblPupilManagementPupils.txtFutureHouse, 
+                         TblPupilManagementPupils.txtFutureAcademicHouse, TblPupilManagementSelections.txtName AS PupilGroupName, 
+                         TblPupilManagementSelections.TblPupilManagementSelectionsID, GroupOwner.Title AS GroupOwnerTitle, GroupOwner.Firstname AS GroupOwnerFirstname, 
+                         GroupOwner.Surname AS GroupOwnerSurname, GroupOwner.Initials AS GroupOwnerInitials, TblPupilManagementPupils.txtVerification, 
+                         TblPupilManagementPupils.txtEntryType, TblPupilManagementPupils.txtEnrolmentDate, TblPupilManagementPupils.intEnrolmentSchoolYear, 
+                         TblPupilManagementPupils.intEnrolmentNCYear, TblPupilManagementPupils.txtEnrolmentHouse, TblPupilManagementPupils.txtEnrolmentAcademicHouse, 
+                         TblPupilManagementPupils.txtEnrolmentTerm, TblPupilManagementPupils.txtEnrolmentForm, EnrolmentSchoolYear.txtYearName AS txtEnrolmentYearName, 
+                         TblPupilManagementPupils.txtLeavingReason, TblPupilManagementPupils.txtLeavingDate, TblPupilManagementPupils.intLeavingNCYear, 
+                         TblPupilManagementPupils.intLeavingSchoolYear, TblPupilManagementPupils.txtLeavingTerm, TblPupilManagementPupils.txtLeavingForm, 
+                         TblPupilManagementPupils.txtLeavingBoardingHouse, TblPupilManagementPupils.txtLeavingAcademicHouse, 
+                         TblPupilManagementPupils.txtFutureSchoolType, TblPupilManagementPupils.intFutureSchool, LeavingSchoolYear.txtYearName AS txtLeavingYearName, 
+                         FutureSchool.Name AS txtFutureSchoolName, TblPupilManagementPupils.txtWithdrawnDate, TblPupilManagementPupils.txtWithdrawnReason, 
+                         TblPupilManagementPupils.txtWithdrawnReasonNote, TblPupilManagementPupils.txtEnquiryType, TblPupilManagementPupils.txtEnquiryDate, 
+                         TblPupilManagementPupils.txtRejectedDate, TblPupilManagementPupils.txtRejectedReason, TblPupilManagementPupils.txtRejectedReasonNote, 
+                         TblPupilManagementPupils.txtProspectusSentDate, TblPupilManagementPupils.intProspectusSent, TblPupilManagementPupils.txtProspectusNotes, 
+                         TblPupilManagementPupils.txtVisitDate, TblPupilManagementPupils.txtVisitNotes, TblPupilManagementPupils.txtEnquiryReason, 
+                         TblPupilManagementPupils.txtHouseVisits, TblPupilManagementPupils.txtReferenceRequestedDate, TblPupilManagementPupils.txtReferenceReceivedDate, 
+                         TblPupilManagementPupils.txtLearningSupportReceived, TblPupilManagementPupils.txtInterviewDate, TblPupilManagementPupils.txtInterviewTime, 
+                         TblPupilManagementPupils.txtInterviewNotes, TblPupilManagementPupils.txtEntranceFeeDate, TblPupilManagementPupils.txtEntranceFeeAmount, 
+                         TblPupilManagementPupils.txtEntranceFeeSignatory, TblPupilManagementPupils.txtEntranceExamDate, 
+                         TblPupilManagementPupils.txtEntranceExamAmount, TblPupilManagementPupils.txtEntranceExamSignatory, TblPupilManagementPupils.txtDepositDate, 
+                         TblPupilManagementPupils.txtDepositAmount, TblPupilManagementPupils.txtDepositSignatory, TblPupilManagementPupils.txtCountryofResidence, 
+                         TblPupilManagementPupils.txtNationality, TblPupilManagementPupils.txtLanguage, TblPupilManagementPupils.txtReligion, 
+                         TblPupilManagementPupils.blnBaptised, TblPupilManagementPupils.blnConfirmation, TblPupilManagementPupils.txtEthnicGroup, 
+                         TblPupilManagementPupils.intPreviousSchool, TblPupilManagementPupils.txtBirthPlace, TblPupilManagementPupils.txtBirthCounty, 
+                         TblPupilManagementPupils.txtBirthCountry, TblPupilManagementPupils.blnDiplomaticAndForces, TblPupilManagementPupils.txtSchoolLink, 
+                         TblPupilManagementNotes.txtType AS txtNoteType, TblPupilManagementNotes.txtNote AS txtNoteBody, TblPupilManagementNotes.txtDate AS txtNoteDate, 
+                         TblPupilManagementNotes.TblPupilManagementNotesID, TblPupilManagementVisas.TblPupilManagementVisasId, TblPupilManagementVisas.txtVisaID, 
+                         TblPupilManagementVisas.txtCAS, TblPupilManagementVisas.txtPlaceIssued, TblPupilManagementVisas.txtNationality AS txtVisaNationality, 
+                         TblPupilManagementVisas.txtType AS txtVisaType, TblPupilManagementVisas.txtNote AS txtVisaNote, TblPupilManagementVisas.dteValidFrom, 
+                         TblPupilManagementVisas.dteEntryDate, TblPupilManagementVisas.dteExpires, TblPupilManagementPassports.txtPassportNumber, 
+                         TblPupilManagementPassports.txtPassportType, TblPupilManagementPassports.txtPassportExpiry, TblPupilManagementPassports.txtPassportNationality, 
+                         TblPupilManagementPupils.txtUsername, TblPupilManagementPupils.txtHomeEmailAddress, TblPupilManagementPupils.txtEmailAddress, 
+                         TblPupilManagementPupils.txtMobileNumber, TblPupilManagementPassports.TblPupilManagementPassportsID, 
+                         TblPupilManagementPassports.txtSubmitDateTime AS txtPassportSubmitDateTime, TblPupilManagementPupils.blnVisaRequired
+FROM            TblPupilManagementPupils INNER JOIN
+                         TblPupilManagementAddressLink ON TblPupilManagementAddressLink.txtSchoolID = TblPupilManagementPupils.txtSchoolID LEFT OUTER JOIN
+                         TblPupilManagementAddresses ON 
+                         TblPupilManagementAddressLink.intAddressID = TblPupilManagementAddresses.TblPupilManagementAddressesID LEFT OUTER JOIN
+                         TblSchools ON TblPupilManagementPupils.intPreviousSchool = TblSchools.TblSchoolsID LEFT OUTER JOIN
+                         TblStaff ON TblPupilManagementPupils.txtTutor = TblStaff.User_Code LEFT OUTER JOIN
+                         TblSchoolManagementYears ON TblPupilManagementPupils.intNCYear = TblSchoolManagementYears.intNCYear LEFT OUTER JOIN
+                         TblPupilManagementPupils AS TblPMP ON TblPupilManagementPupils.intFamily = TblPMP.intFamily AND 
+                         TblPupilManagementPupils.txtSchoolID &lt;&gt; TblPMP.txtSchoolID AND TblPupilManagementPupils.intFamily &lt;&gt; 0 LEFT OUTER JOIN
+                         TblPupilManagementSelectionsStudents ON TblPupilManagementPupils.txtSchoolID = TblPupilManagementSelectionsStudents.txtSchoolID LEFT OUTER JOIN
+                         TblPupilManagementSelections ON 
+                         TblPupilManagementSelectionsStudents.intSelectionID = TblPupilManagementSelections.TblPupilManagementSelectionsID AND 
+                         ISNULL(TblPupilManagementSelectionsStudents.intHidden, 0) = 0 AND ISNULL(TblPupilManagementSelections.intHidden, 0) = 0 LEFT OUTER JOIN
+                         TblStaff AS GroupOwner ON TblPupilManagementSelections.txtSubmitBy = GroupOwner.User_Code LEFT OUTER JOIN
+                         TblSchoolManagementYears AS EnrolmentSchoolYear ON 
+                         TblPupilManagementPupils.intEnrolmentNCYear = EnrolmentSchoolYear.intNCYear LEFT OUTER JOIN
+                         TblSchoolManagementYears AS LeavingSchoolYear ON TblPupilManagementPupils.intLeavingNCYear = LeavingSchoolYear.intNCYear LEFT OUTER JOIN
+                         TblSchools AS FutureSchool ON TblPupilManagementPupils.intFutureSchool = FutureSchool.TblSchoolsID LEFT OUTER JOIN
+                         TblPupilManagementNotes ON TblPupilManagementPupils.txtSchoolID = TblPupilManagementNotes.txtSchoolID LEFT OUTER JOIN
+                         TblPupilManagementVisas ON TblPupilManagementPupils.txtSchoolID = TblPupilManagementVisas.txtSchoolId LEFT OUTER JOIN
+                         TblPupilManagementPassports ON TblPupilManagementPupils.txtSchoolID = TblPupilManagementPassports.txtSchoolID
+WHERE
+TblPupilManagementPupils.intSystemStatus = 1</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="intSystemStatus">
+          <DataField>intSystemStatus</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="TblPupilManagementPupilsID">
+          <DataField>TblPupilManagementPupilsID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="txtForename">
+          <DataField>txtForename</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtSurname">
+          <DataField>txtSurname</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtPreName">
+          <DataField>txtPreName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="intNCYear">
+          <DataField>intNCYear</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="txtForm">
+          <DataField>txtForm</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtBoardingHouse">
+          <DataField>txtBoardingHouse</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtAddressType">
+          <DataField>txtAddressType</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtRelationType">
+          <DataField>txtRelationType</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="intJustContact">
+          <DataField>intJustContact</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="intMailMergeAll">
+          <DataField>intMailMergeAll</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="intBillingMailMerge">
+          <DataField>intBillingMailMerge</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="intCorrespondenceMailMerge">
+          <DataField>intCorrespondenceMailMerge</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="intReportsMailMerge">
+          <DataField>intReportsMailMerge</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="txtAddress1">
+          <DataField>txtAddress1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtAddress2">
+          <DataField>txtAddress2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtAddress3">
+          <DataField>txtAddress3</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtTown">
+          <DataField>txtTown</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtCounty">
+          <DataField>txtCounty</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtCountry">
+          <DataField>txtCountry</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtPostcode">
+          <DataField>txtPostcode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtFax">
+          <DataField>txtFax</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtLabelSalutation">
+          <DataField>txtLabelSalutation</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtPreviousSchoolName">
+          <DataField>txtPreviousSchoolName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="intOrder">
+          <DataField>intOrder</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="txtContactsTitle">
+          <DataField>txtContactsTitle</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtContactsForename">
+          <DataField>txtContactsForename</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtContactsSurname">
+          <DataField>txtContactsSurname</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtLetterSalutation">
+          <DataField>txtLetterSalutation</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtDayTelephone">
+          <DataField>txtDayTelephone</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtMobile1">
+          <DataField>txtMobile1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtEmail1">
+          <DataField>txtEmail1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtDOB">
+          <DataField>txtDOB</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="intStudentHome">
+          <DataField>intStudentHome</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="intMonths">
+          <DataField>intMonths</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="txtPath">
+          <DataField>txtPath</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtSchoolID">
+          <DataField>txtSchoolID</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtMiddleNames">
+          <DataField>txtMiddleNames</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtGender">
+          <DataField>txtGender</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtTutor">
+          <DataField>txtTutor</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtType">
+          <DataField>txtType</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtAcademicHouse">
+          <DataField>txtAcademicHouse</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtAdmissionsDate">
+          <DataField>txtAdmissionsDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Title">
+          <DataField>Title</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Firstname">
+          <DataField>Firstname</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Surname">
+          <DataField>Surname</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtSiblingsIDList">
+          <DataField>txtSiblingsIDList</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtContactsInitials">
+          <DataField>txtContactsInitials</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtContactsMiddleNames">
+          <DataField>txtContactsMiddleNames</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtSecondaryTitle">
+          <DataField>txtSecondaryTitle</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtSecondaryForename">
+          <DataField>txtSecondaryForename</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtSecondarySurname">
+          <DataField>txtSecondarySurname</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtSecondaryInitials">
+          <DataField>txtSecondaryInitials</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtSecondaryMiddleNames">
+          <DataField>txtSecondaryMiddleNames</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtMobile2">
+          <DataField>txtMobile2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtEmail2">
+          <DataField>txtEmail2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtProfession">
+          <DataField>txtProfession</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtWorkTelephone">
+          <DataField>txtWorkTelephone</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="StxtAddress1">
+          <DataField>StxtAddress1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtOtherMedical">
+          <DataField>txtOtherMedical</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtOtherMedicalInformation">
+          <DataField>txtOtherMedicalInformation</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtSOS">
+          <DataField>txtSOS</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtAdditionalHealth">
+          <DataField>txtAdditionalHealth</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="intAsthmatic">
+          <DataField>intAsthmatic</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="txtAsthmaticNotes">
+          <DataField>txtAsthmaticNotes</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="intAllergy">
+          <DataField>intAllergy</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="txtAllergyNotes">
+          <DataField>txtAllergyNotes</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="intDiabetes">
+          <DataField>intDiabetes</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="txtDiabetesNotes">
+          <DataField>txtDiabetesNotes</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="intEpilepsy">
+          <DataField>intEpilepsy</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="txtEpilepsyNotes">
+          <DataField>txtEpilepsyNotes</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="intTravelSickness">
+          <DataField>intTravelSickness</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="txtTravelSicknessNotes">
+          <DataField>txtTravelSicknessNotes</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtHeadachesMigrainesNotes">
+          <DataField>txtHeadachesMigrainesNotes</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtTitle">
+          <DataField>txtTitle</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtOfficialName">
+          <DataField>txtOfficialName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtInitials">
+          <DataField>txtInitials</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtFullName">
+          <DataField>txtFullName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TblPupilManagementAddressesID">
+          <DataField>TblPupilManagementAddressesID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="txtContactNotes">
+          <DataField>txtContactNotes</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="intDuplicateReports">
+          <DataField>intDuplicateReports</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="txtSecondaryProfession">
+          <DataField>txtSecondaryProfession</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="intContactPTA">
+          <DataField>intContactPTA</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="intSecondaryPTA">
+          <DataField>intSecondaryPTA</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="intDeceased">
+          <DataField>intDeceased</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="intSecondaryDeceased">
+          <DataField>intSecondaryDeceased</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="txtWorkFax">
+          <DataField>txtWorkFax</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="intPrivate">
+          <DataField>intPrivate</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="intCanShare">
+          <DataField>intCanShare</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="intReport">
+          <DataField>intReport</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Initials">
+          <DataField>Initials</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtYearName">
+          <DataField>txtYearName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtPegNumber">
+          <DataField>txtPegNumber</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="StxtPreName">
+          <DataField>StxtPreName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="StxtSurname">
+          <DataField>StxtSurname</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="StxtDOB">
+          <DataField>StxtDOB</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="SintMonths">
+          <DataField>SintMonths</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SID">
+          <DataField>SID</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtFutureForm">
+          <DataField>txtFutureForm</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtFutureHouse">
+          <DataField>txtFutureHouse</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtFutureAcademicHouse">
+          <DataField>txtFutureAcademicHouse</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PupilGroupName">
+          <DataField>PupilGroupName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TblPupilManagementSelectionsID">
+          <DataField>TblPupilManagementSelectionsID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="GroupOwnerTitle">
+          <DataField>GroupOwnerTitle</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="GroupOwnerFirstname">
+          <DataField>GroupOwnerFirstname</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="GroupOwnerSurname">
+          <DataField>GroupOwnerSurname</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="GroupOwnerInitials">
+          <DataField>GroupOwnerInitials</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtVerification">
+          <DataField>txtVerification</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtEntryType">
+          <DataField>txtEntryType</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtEnrolmentDate">
+          <DataField>txtEnrolmentDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="intEnrolmentSchoolYear">
+          <DataField>intEnrolmentSchoolYear</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="intEnrolmentNCYear">
+          <DataField>intEnrolmentNCYear</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="txtEnrolmentHouse">
+          <DataField>txtEnrolmentHouse</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtEnrolmentAcademicHouse">
+          <DataField>txtEnrolmentAcademicHouse</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtEnrolmentTerm">
+          <DataField>txtEnrolmentTerm</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtEnrolmentForm">
+          <DataField>txtEnrolmentForm</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtEnrolmentYearName">
+          <DataField>txtEnrolmentYearName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtLeavingReason">
+          <DataField>txtLeavingReason</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtLeavingDate">
+          <DataField>txtLeavingDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="intLeavingNCYear">
+          <DataField>intLeavingNCYear</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="intLeavingSchoolYear">
+          <DataField>intLeavingSchoolYear</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="txtLeavingTerm">
+          <DataField>txtLeavingTerm</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtLeavingForm">
+          <DataField>txtLeavingForm</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtLeavingBoardingHouse">
+          <DataField>txtLeavingBoardingHouse</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtLeavingAcademicHouse">
+          <DataField>txtLeavingAcademicHouse</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtFutureSchoolType">
+          <DataField>txtFutureSchoolType</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="intFutureSchool">
+          <DataField>intFutureSchool</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="txtLeavingYearName">
+          <DataField>txtLeavingYearName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtFutureSchoolName">
+          <DataField>txtFutureSchoolName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtWithdrawnDate">
+          <DataField>txtWithdrawnDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="txtWithdrawnReason">
+          <DataField>txtWithdrawnReason</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtWithdrawnReasonNote">
+          <DataField>txtWithdrawnReasonNote</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtEnquiryType">
+          <DataField>txtEnquiryType</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtEnquiryDate">
+          <DataField>txtEnquiryDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="txtRejectedDate">
+          <DataField>txtRejectedDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="txtRejectedReason">
+          <DataField>txtRejectedReason</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtRejectedReasonNote">
+          <DataField>txtRejectedReasonNote</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtProspectusSentDate">
+          <DataField>txtProspectusSentDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="intProspectusSent">
+          <DataField>intProspectusSent</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="txtProspectusNotes">
+          <DataField>txtProspectusNotes</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtVisitDate">
+          <DataField>txtVisitDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="txtVisitNotes">
+          <DataField>txtVisitNotes</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtEnquiryReason">
+          <DataField>txtEnquiryReason</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtHouseVisits">
+          <DataField>txtHouseVisits</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtReferenceRequestedDate">
+          <DataField>txtReferenceRequestedDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="txtReferenceReceivedDate">
+          <DataField>txtReferenceReceivedDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="txtLearningSupportReceived">
+          <DataField>txtLearningSupportReceived</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtInterviewDate">
+          <DataField>txtInterviewDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="txtInterviewTime">
+          <DataField>txtInterviewTime</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtInterviewNotes">
+          <DataField>txtInterviewNotes</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtEntranceFeeDate">
+          <DataField>txtEntranceFeeDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="txtEntranceFeeAmount">
+          <DataField>txtEntranceFeeAmount</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtEntranceFeeSignatory">
+          <DataField>txtEntranceFeeSignatory</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtEntranceExamDate">
+          <DataField>txtEntranceExamDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="txtEntranceExamAmount">
+          <DataField>txtEntranceExamAmount</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtEntranceExamSignatory">
+          <DataField>txtEntranceExamSignatory</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtDepositDate">
+          <DataField>txtDepositDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="txtDepositAmount">
+          <DataField>txtDepositAmount</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtDepositSignatory">
+          <DataField>txtDepositSignatory</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtCountryofResidence">
+          <DataField>txtCountryofResidence</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtNationality">
+          <DataField>txtNationality</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtLanguage">
+          <DataField>txtLanguage</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtReligion">
+          <DataField>txtReligion</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="blnBaptised">
+          <DataField>blnBaptised</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="blnConfirmation">
+          <DataField>blnConfirmation</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="txtEthnicGroup">
+          <DataField>txtEthnicGroup</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="intPreviousSchool">
+          <DataField>intPreviousSchool</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="txtBirthPlace">
+          <DataField>txtBirthPlace</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtBirthCounty">
+          <DataField>txtBirthCounty</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtBirthCountry">
+          <DataField>txtBirthCountry</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="blnDiplomaticAndForces">
+          <DataField>blnDiplomaticAndForces</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="txtSchoolLink">
+          <DataField>txtSchoolLink</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtNoteType">
+          <DataField>txtNoteType</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtNoteBody">
+          <DataField>txtNoteBody</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtNoteDate">
+          <DataField>txtNoteDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="TblPupilManagementNotesID">
+          <DataField>TblPupilManagementNotesID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="TblPupilManagementVisasId">
+          <DataField>TblPupilManagementVisasId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="txtVisaID">
+          <DataField>txtVisaID</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtCAS">
+          <DataField>txtCAS</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtPlaceIssued">
+          <DataField>txtPlaceIssued</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtVisaNationality">
+          <DataField>txtVisaNationality</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtVisaType">
+          <DataField>txtVisaType</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtVisaNote">
+          <DataField>txtVisaNote</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="dteValidFrom">
+          <DataField>dteValidFrom</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="dteEntryDate">
+          <DataField>dteEntryDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="dteExpires">
+          <DataField>dteExpires</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="txtPassportNumber">
+          <DataField>txtPassportNumber</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtPassportType">
+          <DataField>txtPassportType</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtPassportExpiry">
+          <DataField>txtPassportExpiry</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="txtPassportNationality">
+          <DataField>txtPassportNationality</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtUsername">
+          <DataField>txtUsername</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtHomeEmailAddress">
+          <DataField>txtHomeEmailAddress</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtEmailAddress">
+          <DataField>txtEmailAddress</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="txtMobileNumber">
+          <DataField>txtMobileNumber</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TblPupilManagementPassportsID">
+          <DataField>TblPupilManagementPassportsID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="txtPassportSubmitDateTime">
+          <DataField>txtPassportSubmitDateTime</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="blnVisaRequired">
+          <DataField>blnVisaRequired</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Textbox Name="ReportTitle">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Pupil Data</Value>
+                    <Style>
+                      <FontFamily>Segoe UI Light</FontFamily>
+                      <FontSize>28pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:WatermarkTextbox>Title</rd:WatermarkTextbox>
+            <rd:DefaultName>ReportTitle</rd:DefaultName>
+            <Height>0.5in</Height>
+            <Width>5.5in</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Tablix Name="Tablix1">
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>1in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1in</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>0.25in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox1">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>txt Forename</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox1</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox3">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>txt Surname</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox3</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox5">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>int NCYear</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox5</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox9">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>txt Admissions Date</Value>
+                                  <Style>
+                                    <FontFamily>Arial</FontFamily>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox9</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox11">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>int Enrolment School Year</Value>
+                                  <Style>
+                                    <FontFamily>Arial</FontFamily>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox11</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox7">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>txt Boarding House</Value>
+                                  <Style>
+                                    <FontFamily>Arial</FontFamily>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox7</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox13">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>int System Status</Value>
+                                  <Style>
+                                    <FontFamily>Arial</FontFamily>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox13</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox15">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>txt Gender</Value>
+                                  <Style>
+                                    <FontFamily>Arial</FontFamily>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox15</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.25in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="txtForename">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!txtForename.Value</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>txtForename</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="txtSurname">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!txtSurname.Value</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>txtSurname</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="intNCYear">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!intNCYear.Value</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>intNCYear</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="txtAdmissionsDate">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!txtAdmissionsDate.Value</Value>
+                                  <Style>
+                                    <FontFamily>Arial</FontFamily>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>txtAdmissionsDate</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="intEnrolmentSchoolYear">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!intEnrolmentSchoolYear.Value</Value>
+                                  <Style>
+                                    <FontFamily>Arial</FontFamily>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>intEnrolmentSchoolYear</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="txtBoardingHouse">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!txtBoardingHouse.Value</Value>
+                                  <Style>
+                                    <FontFamily>Arial</FontFamily>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>txtBoardingHouse</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="intSystemStatus">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!intSystemStatus.Value</Value>
+                                  <Style>
+                                    <FontFamily>Arial</FontFamily>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>intSystemStatus</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="txtGender">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!txtGender.Value</Value>
+                                  <Style>
+                                    <FontFamily>Arial</FontFamily>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>txtGender</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <KeepWithGroup>After</KeepWithGroup>
+                </TablixMember>
+                <TablixMember>
+                  <Group Name="Details" />
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <DataSetName>iSAMS</DataSetName>
+            <Top>0.54167in</Top>
+            <Height>0.5in</Height>
+            <Width>8in</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Tablix>
+        </ReportItems>
+        <Height>2.25in</Height>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Body>
+      <Width>16.76042in</Width>
+      <Page>
+        <PageFooter>
+          <Height>0.45in</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="ExecutionTime">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Globals!ExecutionTime</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>ExecutionTime</rd:DefaultName>
+              <Top>0.2in</Top>
+              <Left>4in</Left>
+              <Height>0.25in</Height>
+              <Width>2in</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageFooter>
+        <LeftMargin>1in</LeftMargin>
+        <RightMargin>1in</RightMargin>
+        <TopMargin>1in</TopMargin>
+        <BottomMargin>1in</BottomMargin>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>b0d3f92f-59ae-471b-9193-1e81b1d83f50</rd:ReportID>
+</Report>
